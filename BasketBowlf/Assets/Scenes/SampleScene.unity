@@ -188,7 +188,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb51bf7c2ee46a9488d0d6b5e1764fad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -229,7 +229,7 @@ Transform:
   m_LocalScale: {x: 7.797915, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &161041572
 GameObject:
@@ -244,6 +244,7 @@ GameObject:
   - component: {fileID: 161041575}
   - component: {fileID: 161041573}
   - component: {fileID: 161041574}
+  - component: {fileID: 161041578}
   m_Layer: 0
   m_Name: Bowling Pin (6)
   m_TagString: Untagged
@@ -343,6 +344,111 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &161041578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 161041572}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &402541300
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 402541304}
+  - component: {fileID: 402541303}
+  - component: {fileID: 402541302}
+  - component: {fileID: 402541301}
+  m_Layer: 0
+  m_Name: BowlingCameraTrigger
+  m_TagString: Pin
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &402541301
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402541300}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &402541302
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402541300}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!33 &402541303
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402541300}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &402541304
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 402541300}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.39, y: 1.448, z: 23.23}
+  m_LocalScale: {x: 7.675032, y: 2.9154644, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &414505441
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,6 +462,7 @@ GameObject:
   - component: {fileID: 414505444}
   - component: {fileID: 414505442}
   - component: {fileID: 414505443}
+  - component: {fileID: 414505447}
   m_Layer: 0
   m_Name: Bowling Pin (7)
   m_TagString: Untagged
@@ -455,6 +562,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &414505447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 414505441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,7 +664,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &766878284
 GameObject:
@@ -573,7 +692,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 766878284}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9ae55d12640d0e49bf4711489998a89, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -597,7 +716,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb51bf7c2ee46a9488d0d6b5e1764fad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -653,6 +772,7 @@ GameObject:
   - component: {fileID: 793592868}
   - component: {fileID: 793592866}
   - component: {fileID: 793592867}
+  - component: {fileID: 793592871}
   m_Layer: 0
   m_Name: Bowling Pin (5)
   m_TagString: Untagged
@@ -752,6 +872,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &793592871
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 793592865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +981,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ballToFollow: {fileID: 1903024832}
+  distanceAboveBall: 1.2
 --- !u!1 &1012282135
 GameObject:
   m_ObjectHideFlags: 0
@@ -887,7 +1020,7 @@ Transform:
   - {fileID: 1358840000}
   - {fileID: 1133587664}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1133587659
 GameObject:
@@ -902,6 +1035,7 @@ GameObject:
   - component: {fileID: 1133587662}
   - component: {fileID: 1133587660}
   - component: {fileID: 1133587661}
+  - component: {fileID: 1133587665}
   m_Layer: 0
   m_Name: Bowling Pin (9)
   m_TagString: Untagged
@@ -1001,6 +1135,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1133587665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1133587659}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1187976323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1014,6 +1160,7 @@ GameObject:
   - component: {fileID: 1187976326}
   - component: {fileID: 1187976324}
   - component: {fileID: 1187976325}
+  - component: {fileID: 1187976329}
   m_Layer: 0
   m_Name: Bowling Pin (4)
   m_TagString: Untagged
@@ -1113,6 +1260,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1187976329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1187976323}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1358839995
 GameObject:
   m_ObjectHideFlags: 0
@@ -1126,6 +1285,7 @@ GameObject:
   - component: {fileID: 1358839998}
   - component: {fileID: 1358839996}
   - component: {fileID: 1358839997}
+  - component: {fileID: 1358840001}
   m_Layer: 0
   m_Name: Bowling Pin (8)
   m_TagString: Untagged
@@ -1225,6 +1385,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1358840001
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1358839995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1365233160
 GameObject:
   m_ObjectHideFlags: 0
@@ -1292,7 +1464,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb51bf7c2ee46a9488d0d6b5e1764fad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1333,7 +1505,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1431944037
 GameObject:
@@ -1348,6 +1520,7 @@ GameObject:
   - component: {fileID: 1431944040}
   - component: {fileID: 1431944038}
   - component: {fileID: 1431944039}
+  - component: {fileID: 1431944043}
   m_Layer: 0
   m_Name: Bowling Pin (3)
   m_TagString: Untagged
@@ -1447,6 +1620,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1431944043
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1431944037}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1663469992
 GameObject:
   m_ObjectHideFlags: 0
@@ -1473,7 +1658,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1663469992}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9ae55d12640d0e49bf4711489998a89, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1553,6 +1738,7 @@ GameObject:
   - component: {fileID: 1726752072}
   - component: {fileID: 1726752070}
   - component: {fileID: 1726752071}
+  - component: {fileID: 1726752075}
   m_Layer: 0
   m_Name: Bowling Pin (1)
   m_TagString: Untagged
@@ -1652,6 +1838,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1726752075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1726752069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1729565094
 GameObject:
   m_ObjectHideFlags: 0
@@ -1864,7 +2062,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1762709066}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.0154376, y: 0.8321843, z: -27.9738}
+  m_LocalPosition: {x: -22.3, y: -103.1, z: 98.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1175475911264888785}
@@ -1873,7 +2071,7 @@ Transform:
   - {fileID: 1735208307}
   - {fileID: 1729565095}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1792685849
 GameObject:
@@ -1888,6 +2086,7 @@ GameObject:
   - component: {fileID: 1792685852}
   - component: {fileID: 1792685850}
   - component: {fileID: 1792685851}
+  - component: {fileID: 1792685855}
   m_Layer: 0
   m_Name: Bowling Pin (2)
   m_TagString: Untagged
@@ -1987,6 +2186,18 @@ Transform:
   m_Father: {fileID: 1012282136}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &1792685855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792685849}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1857202548
 GameObject:
   m_ObjectHideFlags: 0
@@ -2054,7 +2265,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb51bf7c2ee46a9488d0d6b5e1764fad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2095,7 +2306,7 @@ Transform:
   m_LocalScale: {x: 0.5, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1903024832
 GameObject:
@@ -2130,6 +2341,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6486fb80a7d1d394eb384670bfc4700b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 963194225}
 --- !u!54 &1903024834
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2140,12 +2352,12 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 20
   m_Drag: 0
-  m_AngularDrag: 0
+  m_AngularDrag: 0.1
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
 --- !u!135 &1903024835
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2218,7 +2430,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: -90.00001, y: 0, z: 82.12501}
 --- !u!1 &2051998277
 GameObject:
@@ -2271,7 +2483,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cb51bf7c2ee46a9488d0d6b5e1764fad, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2312,7 +2524,7 @@ Transform:
   m_LocalScale: {x: 4, y: 1, z: 60}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &2051998282
 Rigidbody:
@@ -2394,6 +2606,7 @@ GameObject:
   - component: {fileID: 1175475911264888785}
   - component: {fileID: 2882297749686446196}
   - component: {fileID: 7614949784755390}
+  - component: {fileID: 1953420608562314604}
   m_Layer: 0
   m_Name: torus 1
   m_TagString: Untagged
@@ -2401,6 +2614,20 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!64 &1953420608562314604
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1953420608562314603}
+  m_Material: {fileID: 13400000, guid: b9ae55d12640d0e49bf4711489998a89, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 0
+  m_Mesh: {fileID: -8803937527578110353, guid: fa8b17890e5d4654482a213f6f80954e, type: 3}
 --- !u!33 &2882297749686446196
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2409,6 +2636,20 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1953420608562314603}
   m_Mesh: {fileID: -8803937527578110353, guid: fa8b17890e5d4654482a213f6f80954e, type: 3}
+--- !u!4 &4737285649983484635
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401479100187699297}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: -25, y: -150, z: 100}
+  m_LocalScale: {x: 1000, y: 1000, z: 25}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!23 &5105392618237199460
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -2429,6 +2670,78 @@ MeshRenderer:
   m_Materials:
   - {fileID: -6478536213147159724, guid: 32eb58e69d373fa4c881e29792a56e5f, type: 3}
   - {fileID: 2100000, guid: 4221dbb5155487d4a90f419d2712e1aa, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+--- !u!1 &5401479100187699297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4737285649983484635}
+  - component: {fileID: 8507831474406112638}
+  - component: {fileID: 5905649505827408308}
+  - component: {fileID: 5401479100187699298}
+  m_Layer: 0
+  m_Name: golfHole1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!64 &5401479100187699298
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401479100187699297}
+  m_Material: {fileID: 13400000, guid: dfc1a9720c395e34499d20bafbed23e8, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -8078680929683896903, guid: eff4d85e9e47a4445b3f36a2b4ef6c8c, type: 3}
+--- !u!23 &5905649505827408308
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401479100187699297}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 560cc8c70b187d84abca534b036c9c50, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2476,6 +2789,7 @@ GameObject:
   - component: {fileID: 5105392618237199460}
   - component: {fileID: 6762440685036610994}
   - component: {fileID: 6762440685036610995}
+  - component: {fileID: 6762440685036610996}
   m_Layer: 0
   m_Name: Bowling Pin
   m_TagString: Untagged
@@ -2513,6 +2827,18 @@ CapsuleCollider:
   m_Height: 16
   m_Direction: 2
   m_Center: {x: -0.00000023841858, y: -0.0014396909, z: -0.876652}
+--- !u!114 &6762440685036610996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6762440685036610993}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a366be99694810e4993a5d5b4ae5d719, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!33 &7006766218182848686
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -2521,3 +2847,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6762440685036610993}
   m_Mesh: {fileID: -2124705421725058983, guid: 32eb58e69d373fa4c881e29792a56e5f, type: 3}
+--- !u!33 &8507831474406112638
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5401479100187699297}
+  m_Mesh: {fileID: -8078680929683896903, guid: eff4d85e9e47a4445b3f36a2b4ef6c8c, type: 3}
