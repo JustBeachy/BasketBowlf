@@ -14,6 +14,9 @@ public class Pin : MonoBehaviour
     void Update()
     {
         if (transform.localPosition.y < 5)
-            Destroy(gameObject);
+        {
+            gameObject.GetComponent<MeshRenderer>().enabled = false;
+            gameObject.GetComponent<CapsuleCollider>().enabled = false;
+        }
     }
 }

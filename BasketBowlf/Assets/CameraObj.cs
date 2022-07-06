@@ -15,6 +15,7 @@ public class CameraObj : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(ballToFollow.GetComponent<Ball>().start)
         transform.position = ballToFollow.transform.position + new Vector3(0, distanceAboveBall, -3);
     }
 }
