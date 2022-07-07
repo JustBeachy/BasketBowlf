@@ -11,6 +11,7 @@ TagManager:
   - Backboard
   - Net
   - Hole
+  - Canvas
   layers:
   - Default
   - TransparentFX

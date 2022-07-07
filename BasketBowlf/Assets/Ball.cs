@@ -5,13 +5,13 @@ using UnityEngine;
 public class Ball : MonoBehaviour
 {
     Rigidbody rb;
-    public GameObject cam, hoop, hole;
+    public GameObject cam, hoop, hole, popUp;
     Vector2 mouseStartPos, mouseEndPos;
     public bool start = false;
     float pos;
     int dir = 1;
     bool fixedLaunch;
-    public bool pastPins, pastHoop;
+    public bool pastPins, pastHoop, pastGolf;
     int scoreBowl, scoreBB, scoreGolf;
     int bounceCount;
     // Start is called before the first frame update
@@ -84,24 +84,61 @@ public class Ball : MonoBehaviour
                 if (p.GetComponentInChildren<Transform>().position.y<1.2)
                     scoreBowl++;
             }
-            
+
+            var popup = Instantiate(popUp, GameObject.FindGameObjectWithTag("Canvas").transform);
+
+            popup.GetComponent<PointsPopUp>().desc.text = scoreBowl +" Pins knocked down!";
+            popup.GetComponent<PointsPopUp>().points.text = "+" + scoreBowl.ToString();
+
         }
 
         if (!pastHoop && transform.position.y < hoop.transform.position.y)
         {
             pastHoop = true;
-            
+
+            var popup = Instantiate(popUp, GameObject.FindGameObjectWithTag("Canvas").transform);
+
+            string dtext="";
+            if (scoreBB == 0)
+                dtext = "Hoop missed";
+            if (scoreBB == 3)
+                dtext = "Backboard hit!";
+            if (scoreBB == 4)
+                dtext = "Rim hit!";
+            if (scoreBB == 7)
+                dtext = "Backboard and rim hit!";
+            if (scoreBB == 10)
+                dtext = "Basket!";
+
+            popup.GetComponent<PointsPopUp>().desc.text = dtext;
+            popup.GetComponent<PointsPopUp>().points.text = "+"+ scoreBB.ToString();
+
+
         }
-        if(pastHoop && rb.velocity==Vector3.zero&&rb.angularVelocity==Vector3.zero)
+        if(!pastGolf && pastHoop && rb.velocity==Vector3.zero&&rb.angularVelocity==Vector3.zero)
         {
+            pastGolf = true;
             float dis = Vector3.Distance(transform.position, hole.transform.position);
-            if(scoreGolf<10)
+            if (scoreGolf != 10)
             {
-                if (dis >= 50)
-                    scoreGolf = 1;
-                else
-                    scoreGolf = (10 - ((int)dis/5)) + 1;
+                
+                if (scoreGolf < 10)
+                {
+                    if (dis >= 50)
+                        scoreGolf = 1;
+                    else
+                        scoreGolf = (9 - ((int)dis / 5));
+                    if (scoreGolf < 0)
+                        scoreGolf = 0;
+                }
+
             }
+            var popup = Instantiate(popUp, GameObject.FindGameObjectWithTag("Canvas").transform);
+            popup.GetComponent<PointsPopUp>().points.text = "+" + scoreGolf.ToString();
+            if(scoreGolf!=10)
+            popup.GetComponent<PointsPopUp>().desc.text = dis.ToString("0.0") + " Meters from the hole.";
+            else
+            popup.GetComponent<PointsPopUp>().desc.text = "In the hole!";
 
         }
 
@@ -119,6 +156,12 @@ public class Ball : MonoBehaviour
         if (collision.gameObject.tag == "Net")
         {
             scoreBB = 10;
+
+        }
+
+        if (collision.gameObject.tag == "Hole")
+        {
+            scoreGolf = 10;
             rb.velocity = new Vector3(0, 0, 0);
             rb.angularVelocity = new Vector3(0, 0, 0);
         }
@@ -134,7 +177,10 @@ public class Ball : MonoBehaviour
                 bounceCount++;
             }
             else
+            {
                 rb.angularDrag = 2f;
+                rb.drag = 2f;
+            }
         }
 
         if (collision.gameObject.tag == "Rim")

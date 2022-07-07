@@ -65,7 +65,9 @@
     <Compile Include="Assets\Ball.cs" />
     <Compile Include="Assets\CameraObj.cs" />
     <Compile Include="Assets\Pin.cs" />
+    <Compile Include="Assets\PointsPopUp.cs" />
     <Compile Include="Assets\Pusher.cs" />
+    <Compile Include="Assets\ScoreStatic.cs" />
     <Reference Include="UnityEngine">
       <HintPath>C:/Program Files/Unity/Hub/Editor/2019.4.25f1/Editor/Data/Managed/UnityEngine/UnityEngine.dll</HintPath>
     </Reference>
