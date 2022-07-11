@@ -1,13 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
+    public Material matBBall, matGball;
     Rigidbody rb;
     public GameObject cam, hoop, hole, popUp;
     Vector2 mouseStartPos, mouseEndPos;
     public bool start = false;
+    bool firstClick = false;
     float pos;
     int dir = 1;
     bool fixedLaunch;
@@ -19,6 +22,10 @@ public class Ball : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.useGravity = false;
+
+        scoreBB = 0;
+        scoreBowl = 0;
+        scoreGolf = 0;
     }
 
    /* private void FixedUpdate()
@@ -36,10 +43,6 @@ public class Ball : MonoBehaviour
     {
         if (start)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                rb.AddForce(new Vector3(0, 0, 300), ForceMode.Impulse);
-            }
 
             if (Input.GetMouseButtonDown(0))
             {
@@ -48,12 +51,17 @@ public class Ball : MonoBehaviour
 
             if (Input.GetMouseButtonUp(0))
             {
-                mouseEndPos = Input.mousePosition;
+                if (firstClick)
+                {
+                    mouseEndPos = Input.mousePosition;
 
-                if (!pastHoop)
-                rb.AddForce(new Vector3((mouseEndPos.x - mouseStartPos.x) * 2, 0, (mouseEndPos.y - mouseStartPos.y) * 4) * 2);
-                if(bounceCount<3)
-                rb.AddTorque(new Vector3(/*Mathf.Abs*/(mouseEndPos.y - mouseStartPos.y) * 4, 0, (mouseStartPos.x - mouseEndPos.x) * 4));
+                    if (!pastHoop)
+                        rb.AddForce(new Vector3((mouseEndPos.x - mouseStartPos.x) * 2, 0, (mouseEndPos.y - mouseStartPos.y) * 4) * 2);
+                    if (bounceCount < 3)
+                        rb.AddTorque(new Vector3(/*Mathf.Abs*/(mouseEndPos.y - mouseStartPos.y) * 4, 0, (mouseStartPos.x - mouseEndPos.x) * 4));
+                }
+                else
+                    firstClick = true;
             }
         }
         else
@@ -69,7 +77,7 @@ public class Ball : MonoBehaviour
                 start = true;
                 rb.useGravity = true;
                 rb.velocity = Vector3.zero;
-                rb.AddForce(new Vector3(-30, 0, 100), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, 0, 150), ForceMode.Impulse);
                 fixedLaunch = true;
             }
         }
@@ -77,6 +85,7 @@ public class Ball : MonoBehaviour
         if(!pastPins && transform.position.y<-15)
         {
             pastPins = true;
+            GetComponent<MeshRenderer>().material = matBBall;
 
             foreach (GameObject p in GameObject.FindGameObjectsWithTag("Pin"))
             {
@@ -95,6 +104,7 @@ public class Ball : MonoBehaviour
         if (!pastHoop && transform.position.y < hoop.transform.position.y)
         {
             pastHoop = true;
+            GetComponent<MeshRenderer>().material = matGball;
 
             var popup = Instantiate(popUp, GameObject.FindGameObjectWithTag("Canvas").transform);
 
@@ -140,6 +150,13 @@ public class Ball : MonoBehaviour
             else
             popup.GetComponent<PointsPopUp>().desc.text = "In the hole!";
 
+            int framescore = scoreBB + scoreBowl + scoreGolf;
+            ScoreStatic.frameScore[SceneManager.GetActiveScene().buildIndex] = framescore;
+            if (SceneManager.GetActiveScene().buildIndex == 0)
+                ScoreStatic.totalScore[0] = framescore;
+            else
+                ScoreStatic.totalScore[SceneManager.GetActiveScene().buildIndex] = ScoreStatic.totalScore[SceneManager.GetActiveScene().buildIndex - 1] + framescore;
+
         }
 
 
@@ -173,13 +190,14 @@ public class Ball : MonoBehaviour
         {
             if (bounceCount < 3)
             {
-                rb.AddForce(new Vector3(-rb.angularVelocity.z, 0, rb.angularVelocity.x) * 2000);
+                rb.velocity = new Vector3(0, rb.velocity.y, 0);
+                rb.AddForce(new Vector3(-rb.angularVelocity.z, 0, rb.angularVelocity.x) * 1000);
                 bounceCount++;
             }
             else
             {
                 rb.angularDrag = 2f;
-                rb.drag = 2f;
+                rb.drag = 1f;
             }
         }
 
