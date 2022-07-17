@@ -5,6 +5,7 @@ using UnityEngine;
 public class Pusher : MonoBehaviour
 {
     public GameObject ball;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class Pusher : MonoBehaviour
     {
         if (ball.GetComponent<Ball>().start)
         {
-            transform.position += new Vector3(0, 0, 5) * Time.deltaTime;
+            transform.position += new Vector3(0, 0, speed) * Time.deltaTime;
             if (ball.GetComponent<Ball>().pastPins)
                 Destroy(gameObject);
         }

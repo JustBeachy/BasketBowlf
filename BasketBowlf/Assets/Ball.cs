@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
+    public AudioClip[] sounds;
     public Material matBBall, matGball;
     Rigidbody rb;
     public GameObject cam, hoop, hole, popUp;
@@ -17,6 +18,9 @@ public class Ball : MonoBehaviour
     public bool pastPins, pastHoop, pastGolf;
     int scoreBowl, scoreBB, scoreGolf;
     int bounceCount;
+    float nextLevelTimer=0;
+    bool levelEnded = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,6 +45,25 @@ public class Ball : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GetComponent<AudioSource>().clip == sounds[0] )
+        {
+            GetComponent<AudioSource>().clip = sounds[1];
+            GetComponent<AudioSource>().loop = true;
+            GetComponent<AudioSource>().volume = .3f;
+            GetComponent<AudioSource>().Play();
+        }
+
+        if (GetComponent<AudioSource>().clip == sounds[1] )
+            GetComponent<AudioSource>().pitch = .5f + (Mathf.Abs(rb.velocity.magnitude) / 50);
+
+        if (levelEnded)
+            nextLevelTimer += Time.deltaTime;
+
+        if(nextLevelTimer>2)
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        }
+
         if (start)
         {
 
@@ -99,6 +122,9 @@ public class Ball : MonoBehaviour
             popup.GetComponent<PointsPopUp>().desc.text = scoreBowl +" Pins knocked down!";
             popup.GetComponent<PointsPopUp>().points.text = "+" + scoreBowl.ToString();
 
+            GetComponent<AudioSource>().clip = sounds[7];
+            GetComponent<AudioSource>().Play();
+
         }
 
         if (!pastHoop && transform.position.y < hoop.transform.position.y)
@@ -111,11 +137,11 @@ public class Ball : MonoBehaviour
             string dtext="";
             if (scoreBB == 0)
                 dtext = "Hoop missed";
-            if (scoreBB == 3)
+            if (scoreBB == 2)
                 dtext = "Backboard hit!";
-            if (scoreBB == 4)
+            if (scoreBB == 3)
                 dtext = "Rim hit!";
-            if (scoreBB == 7)
+            if (scoreBB == 5)
                 dtext = "Backboard and rim hit!";
             if (scoreBB == 10)
                 dtext = "Basket!";
@@ -123,43 +149,77 @@ public class Ball : MonoBehaviour
             popup.GetComponent<PointsPopUp>().desc.text = dtext;
             popup.GetComponent<PointsPopUp>().points.text = "+"+ scoreBB.ToString();
 
-
+            cam.GetComponent<CameraObj>().distanceAboveBall = 12;
+            GetComponent<AudioSource>().clip = sounds[7];
+            GetComponent<AudioSource>().Play();
         }
         if(!pastGolf && pastHoop && rb.velocity==Vector3.zero&&rb.angularVelocity==Vector3.zero)
         {
-            pastGolf = true;
-            float dis = Vector3.Distance(transform.position, hole.transform.position);
-            if (scoreGolf != 10)
-            {
-                
-                if (scoreGolf < 10)
-                {
-                    if (dis >= 50)
-                        scoreGolf = 1;
-                    else
-                        scoreGolf = (9 - ((int)dis / 5));
-                    if (scoreGolf < 0)
-                        scoreGolf = 0;
-                }
 
-            }
-            var popup = Instantiate(popUp, GameObject.FindGameObjectWithTag("Canvas").transform);
-            popup.GetComponent<PointsPopUp>().points.text = "+" + scoreGolf.ToString();
-            if(scoreGolf!=10)
-            popup.GetComponent<PointsPopUp>().desc.text = dis.ToString("0.0") + " Meters from the hole.";
-            else
-            popup.GetComponent<PointsPopUp>().desc.text = "In the hole!";
+            EndHole();
+        }
 
-            int framescore = scoreBB + scoreBowl + scoreGolf;
-            ScoreStatic.frameScore[SceneManager.GetActiveScene().buildIndex] = framescore;
-            if (SceneManager.GetActiveScene().buildIndex == 0)
-                ScoreStatic.totalScore[0] = framescore;
-            else
-                ScoreStatic.totalScore[SceneManager.GetActiveScene().buildIndex] = ScoreStatic.totalScore[SceneManager.GetActiveScene().buildIndex - 1] + framescore;
-
+        if(!pastGolf && pastHoop && rb.transform.position.y<-160)
+        {
+            scoreGolf = -1;
+            EndHole();
         }
 
 
+    }
+
+    void EndHole()
+    {
+        if (!GetComponent<AudioSource>().isPlaying)
+        {
+            GetComponent<AudioSource>().clip = sounds[7];
+            GetComponent<AudioSource>().Play();
+        }
+
+        pastGolf = true;
+        float dis = Vector3.Distance(transform.position, hole.transform.position);
+        if (scoreGolf != 10)
+        {
+
+            if (scoreGolf < 10&&scoreGolf!=-1)
+            {
+                if (dis >= 50)
+                    scoreGolf = 1;
+                else
+                    scoreGolf = (9 - ((int)dis / 5));
+                if (scoreGolf < 0)
+                    scoreGolf = 0;
+            }
+            if (scoreGolf == -1)
+                scoreGolf = 0;
+
+        }
+        var popup = Instantiate(popUp, GameObject.FindGameObjectWithTag("Canvas").transform);
+        popup.GetComponent<PointsPopUp>().points.text = "+" + scoreGolf.ToString();
+        if (scoreGolf != 10)
+            popup.GetComponent<PointsPopUp>().desc.text = dis.ToString("0.0") + " cm from the hole.";
+        else
+            popup.GetComponent<PointsPopUp>().desc.text = "In the hole!";
+
+        int framescore = scoreBB + scoreBowl + scoreGolf;
+        ScoreStatic.frameScore[SceneManager.GetActiveScene().buildIndex] = framescore;
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+            ScoreStatic.totalScore[0] = framescore;
+        else
+            ScoreStatic.totalScore[SceneManager.GetActiveScene().buildIndex] = ScoreStatic.totalScore[SceneManager.GetActiveScene().buildIndex - 1] + framescore;
+
+        levelEnded = true;
+    }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "Lane")
+        {
+            GetComponent<AudioSource>().Stop();
+            GetComponent<AudioSource>().loop = false;
+            GetComponent<AudioSource>().volume = .5f;
+            GetComponent<AudioSource>().pitch = 1;
+        }
     }
 
     private void OnTriggerEnter(Collider collision)
@@ -167,13 +227,16 @@ public class Ball : MonoBehaviour
         if(collision.gameObject.tag=="CamTrigger")
         {
             cam.transform.rotation = Quaternion.Euler(new Vector3(75, 0, 0));
-            cam.GetComponent<CameraObj>().distanceAboveBall = 9; 
+            cam.GetComponent<CameraObj>().distanceAboveBall = 9;
+
         }
 
         if (collision.gameObject.tag == "Net")
         {
             scoreBB = 10;
 
+            GetComponent<AudioSource>().clip = sounds[4];
+            GetComponent<AudioSource>().Play();
         }
 
         if (collision.gameObject.tag == "Hole")
@@ -181,12 +244,23 @@ public class Ball : MonoBehaviour
             scoreGolf = 10;
             rb.velocity = new Vector3(0, 0, 0);
             rb.angularVelocity = new Vector3(0, 0, 0);
+
+            
+            GetComponent<AudioSource>().clip = sounds[6];
+            GetComponent<AudioSource>().Play();
         }
     }
 
-    private void OnCollisionExit(Collision collision)
+    
+
+    private void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag=="Green")
+        if (collision.gameObject.tag == "Lane")
+        {
+            GetComponent<AudioSource>().clip = sounds[0];
+            GetComponent<AudioSource>().Play();
+        }
+            if (collision.gameObject.tag=="Green")
         {
             if (bounceCount < 3)
             {
@@ -199,27 +273,51 @@ public class Ball : MonoBehaviour
                 rb.angularDrag = 2f;
                 rb.drag = 1f;
             }
+
+            if (GetComponent<AudioSource>().clip != sounds[6])
+            {
+                GetComponent<AudioSource>().clip = sounds[5];
+                GetComponent<AudioSource>().Play();
+            }
         }
 
-        if (collision.gameObject.tag == "Rim")
+        if (collision.gameObject.tag == "Flag")
         {
+            GetComponent<AudioSource>().clip = sounds[2];
+            GetComponent<AudioSource>().Play();
+        }
+
+            if (collision.gameObject.tag == "Rim")
+        {
+            if (GetComponent<AudioSource>().clip != sounds[4])
+            {
+                GetComponent<AudioSource>().clip = sounds[2];
+                GetComponent<AudioSource>().Play();
+            }
+
             if (scoreBB != 10)
             {
-                if (scoreBB < 4)
-                    scoreBB = 4;
+                if (scoreBB < 2)
+                    scoreBB = 3;
                 else
-                    scoreBB = 7;
+                    scoreBB = 5;
             }
         }
 
         if (collision.gameObject.tag == "Backboard")
         {
+            if (GetComponent<AudioSource>().clip != sounds[4])
+            {
+                GetComponent<AudioSource>().clip = sounds[3];
+                GetComponent<AudioSource>().Play();
+            }
+
             if (scoreBB != 10)
             {
-                if (scoreBB < 4)
-                    scoreBB = 3;
+                if (scoreBB < 3)
+                    scoreBB = 2;
                 else
-                    scoreBB = 7;
+                    scoreBB = 5;
             }
         }
     }

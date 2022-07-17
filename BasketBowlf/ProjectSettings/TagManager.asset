@@ -12,6 +12,9 @@ TagManager:
   - Net
   - Hole
   - Canvas
+  - Lane
+  - Ball
+  - Flag
   layers:
   - Default
   - TransparentFX
@@ -21,8 +24,8 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
+  - Pins
+  - Pusher
   - 
   - 
   - 

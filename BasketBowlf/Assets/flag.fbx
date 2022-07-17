@@ -1,0 +1,174 @@
+; FBX 7.3.0 project file
+; ----------------------------------------------------
+
+FBXHeaderExtension: {
+	FBXHeaderVersion: 1003
+	FBXVersion: 7300
+	CreationTimeStamp: {
+		Version: 1000
+		Year: 2022
+		Month: 6
+		Day: 12
+		Hour: 22
+		Minute: 55
+		Second: 0
+		Millisecond: 762
+	}
+	Creator: "Vectary"
+	SceneInfo: {
+		Type: "UserData"
+		Version: 100
+		MetaData: {
+			Version: 100
+			Title: "Project Name"
+			Subject: ""
+			Author: "Alex"
+			Keywords: ""
+			Revision: ""
+			Comment: ""
+		}
+	}
+}
+GlobalSettings: {
+	Version: 1000
+	Properties70: {
+		P: "UpAxis", "int", "Integer", "", 2
+		P: "UpAxisSign", "int", "Integer", "", 1
+		P: "FrontAxis", "int", "Integer", "", 1
+		P: "FrontAxisSign", "int", "Integer", "", -1
+		P: "CoordAxis", "int", "Integer", "", 0
+		P: "CoordAxisSign", "int", "Integer", "", 1
+		P: "OriginalUpAxis", "int", "Integer", "", 1
+		P: "OriginalUpAxisSign", "int", "Integer", "", 1
+		P: "UnitScaleFactor", "double", "Number", "", 0.1
+		P: "OriginalUnitScaleFactor", "double", "Number", "", 1
+	}
+}
+
+; Documents Description
+; ----------------------------------------------------
+
+Documents: {
+	Count: 1
+	Document: 1000003, undefined {
+		RootNode: 0
+	}
+}
+
+; Object definitions
+; ----------------------------------------------------
+
+Definitions: {
+	Version: 100
+	Count: 4
+	ObjectType: "GlobalSettings" {
+		Count: 1
+	}
+	ObjectType: "Model" {
+		Count: 1
+	}
+	ObjectType: "Geometry" {
+		Count: 1
+	}
+	ObjectType: "Material" {
+		Count: 1
+	}
+	ObjectType: "Texture" {
+		Count: 0
+	}
+	ObjectType: "Video" {
+		Count: 0
+	}
+}
+
+; Object properties
+; ----------------------------------------------------
+
+Objects: {
+	Model: 1000000, "Model::Plane - baked", "Mesh" {
+		Version: 232
+		Properties70: {
+			P: "InheritType", "enum", "", "", 1
+			P: "DefaultAttributeIndex", "int", "Integer", "", 0
+			P: "Lcl Translation", "Lcl Translation", "", "A", 0,0,0
+			P: "Lcl Rotation", "Lcl Rotation", "", "A", 0,0,0
+			P: "Lcl Scaling", "Lcl Scaling", "", "A", 1,1,1
+		}
+	}
+	Geometry: 1000001, "Geometry::Plane - baked", "Mesh" {
+		GeometryVersion: 124
+		Vertices: *42 {
+			a: -86,-98,0,46,-48,0,46,-46,0,-86,-96,0,-86,-100,0,46,-50,0,-46,46,0,-48,46,0,-88,-96,0,-50,46,0,-90,-96,0,-87.72016906738281,-97.72016906738281,0,-88.82843017578125,-98.82843017578125,0,-4,6,0
+		}
+		PolygonVertexIndex: *32 {
+			a: 0,1,2,-4,4,5,1,-1,6,7,8,-4,7,9,10,-9,3,8,11,-1,10,12,11,-9,4,0,11,-13,3,2,13,-7
+		}
+		LayerElementNormal: 0 {
+			Version: 100
+			Name: ""
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "Direct"
+			Normals: *96 {
+				a: 0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1,0,0,1
+			}
+		}
+		LayerElementUV: 0 {
+			Version: 100
+			Name: "UVChannel_1"
+			MappingInformationType: "ByPolygonVertex"
+			ReferenceInformationType: "IndexToDirect"
+			UV: *28 {
+				a: 0.03999999910593033,0.019999999552965164,0.9599999785423279,0.019999999552965164,0.9599999785423279,0.03999999910593033,0.03999999910593033,0.03999999910593033,0.03999999910593033,0,0.9599999785423279,0,0.03999999910593033,0.9599999785423279,0.019999999552965164,0.9599999785423279,0.019999999552965164,0.03999999910593033,0,0.9599999785423279,0,0.03999999910593033,0.02279825694859028,0.02279825694859028,0.011715728789567947,0.011715728789567947,0.9599999785423279,0.9599999785423279
+			}
+			UVIndex: *32 {
+				a: 0,1,2,3,4,5,1,0,6,7,8,3,7,9,10,8,3,8,11,0,10,12,11,8,4,0,11,12,3,2,13,6
+			}
+		}
+		Layer: 0 {
+			Version: 100
+			LayerElement: {
+				Type: "LayerElementNormal"
+				TypedIdx: 0
+			}
+			LayerElement: {
+				Type: "LayerElementUV"
+				TypedIdx: 0
+			}
+		}
+	}
+	Material: 1000002, "Material::Milano", "" {
+		Version: 102
+		ShadingModel: "phong"
+		MultiLayer: 0
+		Properties70: {
+			P: "EmissiveColor", "Color", "", "A", 1,1,1
+			P: "EmissiveFactor", "Number", "", "A", 0
+			P: "DiffuseColor", "Color", "", "A", 0.9372,0.9372,0.9372
+			P: "DiffuseFactor", "Number", "", "A", 0.96
+			P: "Opacity", "Number", "", "A", 1
+			P: "TransparentColor", "Color", "", "A", 1,1,1
+			P: "TransparencyFactor", "Number", "", "A", 0
+			P: "SpecularColor", "Number", "", "A", 1,1,1
+			P: "SpecularFactor", "Number", "", "A", 0.04
+			P: "ShininessExponent", "Number", "", "A", 244.79999999999998
+			P: "NormalFactor", "Number", "", "A", 0
+			P: "RoughnessFactor", "Number", "", "A", 0.2
+			P: "MetallicFactor", "Number", "", "A", 0
+		}
+	}
+}
+
+; Object connections
+; ----------------------------------------------------
+
+Connections: {
+
+	; Geometry::Plane - baked, Model::Plane - baked
+	C: "OO",1000001,1000000
+
+	; Material::Milano, Model::Plane - baked
+	C: "OO",1000002,1000000
+
+	; Model::Plane - baked, Model::RootNode
+	C: "OO",1000000,0
+}
