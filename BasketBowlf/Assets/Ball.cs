@@ -100,7 +100,7 @@ public class Ball : MonoBehaviour
                 start = true;
                 rb.useGravity = true;
                 rb.velocity = Vector3.zero;
-                rb.AddForce(new Vector3(0, 0, 150), ForceMode.Impulse);
+                rb.AddForce(new Vector3(0, 0, 175), ForceMode.Impulse);
                 fixedLaunch = true;
             }
         }
